@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Layout from '../components/Layout'
+import Button from '@material-ui/core/Button';
 
 const IndexPage = () => (
   <Layout title="Home | Next.js + TypeScript Example">
@@ -9,6 +10,9 @@ const IndexPage = () => (
         <a>About</a>
       </Link>
     </p>
+    <Button variant="contained" color="primary">
+      Hello World
+    </Button>
   </Layout>
 )
 
