@@ -1,9 +1,12 @@
 import Link from 'next/link'
-import Layout from '../components/Layout'
 import Button from '@material-ui/core/Button';
+import Head from 'next/head';
 
 const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
+  <>
+    <Head>
+      <title>Main</title>
+    </Head>
     <h1>Hello Next.js 👋</h1>
     <p>
       <Link href="/about">
@@ -13,7 +16,7 @@ const IndexPage = () => (
     <Button variant="contained" color="primary">
       Hello World
     </Button>
-  </Layout>
+  </>
 )
 
 export default IndexPage
