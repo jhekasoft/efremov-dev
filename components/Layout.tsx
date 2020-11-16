@@ -1,7 +1,8 @@
 import React, { ReactNode } from 'react'
+import clsx from 'clsx'
 // import Link from 'next/link'
 import Head from 'next/head'
-import { AppBar, Avatar, createMuiTheme, CssBaseline, Divider, IconButton, List, ListItem, ListItemAvatar, ListItemIcon, ListItemText, makeStyles, SwipeableDrawer, Theme, ThemeProvider, Toolbar, Typography } from '@material-ui/core'
+import { AppBar, Avatar, createMuiTheme, CssBaseline, Divider, Drawer, IconButton, List, ListItem, ListItemAvatar, ListItemIcon, ListItemText, makeStyles, SwipeableDrawer, Theme, ThemeProvider, Toolbar, Typography } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import TelegramIcon from '@material-ui/icons/Telegram'
 import GitHubIcon from '@material-ui/icons/GitHub'
@@ -23,7 +24,8 @@ const theme = createMuiTheme({
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    flexGrow: 1,
+    // flexGrow: 1,
+    display: 'flex',
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -38,13 +40,26 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexGrow: 1,
   },
   drawer: {
-    width: 240,
     flexShrink: 0,
   },
+  drawerOpen: {
+    width: 240
+  },
   drawerPaper: {
+    width: 240,
     backgroundColor: teal[900] // TODO: take color from theme
     // backgroundColor: theme.palette.primary.main
-  }
+  },
+  drawerContainer: {
+    overflow: 'auto',
+  },
+  drawerList: {
+    // width: 240,
+  },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
+  },
 }))
 
 const Layout = ({ children, title = 'efremov.dev' }: Props) => {
@@ -95,15 +110,17 @@ const Layout = ({ children, title = 'efremov.dev' }: Props) => {
         </AppBar>
         <SwipeableDrawer
           classes={{ paper: classes.drawerPaper }}
-          className={classes.appBar}
+          className={clsx(classes.drawer, {
+            [classes.drawerOpen]: state.showDrawer,
+          })}
           anchor="left"
           variant="persistent"
           open={state.showDrawer}
-          onClose={toggleDrawer()}
           onOpen={toggleDrawer()}
+          onClose={toggleDrawer()}
         >
           <Toolbar />
-          <List>
+          <List className={classes.drawerContainer}>
             <ListItem alignItems="flex-start">
               <ListItemAvatar>
                 <Avatar alt="Eugene Efremov" src="https://avatars2.githubusercontent.com/u/1534306?s=460&v=4" />
@@ -122,10 +139,12 @@ const Layout = ({ children, title = 'efremov.dev' }: Props) => {
             ))}
           </List>
         </SwipeableDrawer>
-        <main>
+        <main className={classes.content}>
+          <Toolbar />
           {children}
         </main>
       </ThemeProvider>
+      <NextScript />
     </div>
   )
 }
