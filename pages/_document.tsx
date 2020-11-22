@@ -9,7 +9,7 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           {/* PWA primary color */}
-          <meta name="theme-color" content={theme.palette.primary.main} />
+          <meta name="theme-color" content={theme.palette.primary.dark} />
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Fira+Sans&display=swap&subset=cyrillic,cyrillic-ext"

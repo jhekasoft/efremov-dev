@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
+    // backgroundColor: theme.palette.primary.dark
   },
   toolbar: {
     paddingLeft: theme.spacing(2)
@@ -44,7 +45,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   drawerPaper: {
     width: 240,
-    backgroundColor: teal[900]
+    backgroundColor: theme.palette.primary.dark
   },
   drawerContainer: {
     overflow: 'auto',
@@ -133,13 +134,13 @@ const Layout = ({ children }: Props) => {
           <Divider />
 
           <Link href="/" passHref>
-            <ListItem button component="a">
+            <ListItem button component="a" selected={router.pathname == "/"}>
               <ListItemIcon><HomeIcon /></ListItemIcon>
               <ListItemText primary="About" />
             </ListItem>
           </Link>
           <Link href="/experience" passHref>
-            <ListItem button component="a">
+            <ListItem button component="a" selected={router.pathname == "/experience"}>
               <ListItemIcon><LaptopIcon /></ListItemIcon>
               <ListItemText primary="Experience" />
             </ListItem>
@@ -151,19 +152,19 @@ const Layout = ({ children }: Props) => {
             </ListItem>
           </Link>
           <Link href="/publications" passHref>
-            <ListItem button component="a">
+            <ListItem button component="a" selected={router.pathname == "/publications"}>
               <ListItemIcon><DescriptionIcon /></ListItemIcon>
               <ListItemText primary="Publications" />
             </ListItem>
           </Link>
           <Link href="/own-projects" passHref>
-            <ListItem button component="a">
+            <ListItem button component="a" selected={router.pathname == "/own-projects"}>
               <ListItemIcon><CodeIcon /></ListItemIcon>
               <ListItemText primary="Own projects" />
             </ListItem>
           </Link>
           <Link href="/contact" passHref>
-            <ListItem button component="a">
+            <ListItem button component="a" selected={router.pathname == "/contact"}>
               <ListItemIcon><ContactsIcon /></ListItemIcon>
               <ListItemText primary="Contact" />
             </ListItem>

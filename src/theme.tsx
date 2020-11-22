@@ -5,7 +5,10 @@ const theme = createMuiTheme({
   palette: {
     type: 'dark',
     primary: {
-      main: teal[800]
+      main: teal[600],
+      // contrastText: teal[200],
+      // light: teal[200],
+      // dark: teal[900]
     }
   },
   typography: {
