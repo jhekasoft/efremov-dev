@@ -7,6 +7,14 @@ const theme = createMuiTheme({
     primary: {
       main: teal[800]
     }
+  },
+  typography: {
+    fontFamily: [
+      '"Fira Sans"',
+      // 'Roboto',
+      'Arial',
+      'sans-serif'
+    ].join(',')
   }
 })
 
