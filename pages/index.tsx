@@ -1,22 +1,39 @@
-import Link from 'next/link'
-import Button from '@material-ui/core/Button';
-import Head from 'next/head';
+import Head from 'next/head'
+import { Avatar, Chip, createStyles, Icon, makeStyles, Theme } from '@material-ui/core'
 
-const IndexPage = () => (
-  <>
-    <Head>
-      <title>Main</title>
-    </Head>
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </p>
-    <Button variant="contained" color="primary">
-      Hello World
-    </Button>
-  </>
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    avatar: {
+      width: theme.spacing(40),
+      height: theme.spacing(40),
+    }
+  })
 )
+
+const IndexPage = () => {
+  const classes = useStyles()
+
+  return (
+    <>
+      <Head>
+        <title>Eugene Efremov</title>
+      </Head>
+      <h1>eefremov.dev</h1>
+      <p>Eugene Efremov</p>
+      <Avatar
+        alt="Eugene Efremov"
+        src="https://avatars2.githubusercontent.com/u/1534306?s=460&v=4"
+        className={classes.avatar} />
+      <p>Web Developer. Kyiv, Ukraine. 🇺🇦</p>
+
+      <p>Technologies that I prefer (technology stack):</p>
+      <p>
+        <Chip
+          avatar={<Icon>star</Icon>}
+          label="Go" />
+      </p>
+    </>
+  )
+}
 
 export default IndexPage

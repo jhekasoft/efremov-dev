@@ -11,8 +11,7 @@ import DescriptionIcon from '@material-ui/icons/Description'
 import CodeIcon from '@material-ui/icons/Code'
 import ContactsIcon from '@material-ui/icons/Contacts'
 import Link from 'next/link'
-import { teal } from '@material-ui/core/colors'
-import { useRouter } from "next/router"
+import { useRouter } from 'next/router'
 
 type Props = {
   children?: ReactNode
@@ -80,7 +79,7 @@ const Layout = ({ children }: Props) => {
     // }
 
     setState({ ...state, showDrawer: !state.showDrawer });
-  };
+  }
 
   return (
     <div className={classes.root}>
