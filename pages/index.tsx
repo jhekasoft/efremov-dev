@@ -1,11 +1,15 @@
 import Head from 'next/head'
-import { Avatar, Chip, createStyles, Icon, makeStyles, Theme } from '@material-ui/core'
+import { Avatar, Chip, createStyles, makeStyles, Theme } from '@material-ui/core'
+import { LanguageGo } from 'mdi-material-ui'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     avatar: {
       width: theme.spacing(40),
       height: theme.spacing(40),
+    },
+    langGo: {
+      color: '#49ACD7'
     }
   })
 )
@@ -29,8 +33,9 @@ const IndexPage = () => {
       <p>Technologies that I prefer (technology stack):</p>
       <p>
         <Chip
-          avatar={<Icon>star</Icon>}
-          label="Go" />
+          icon={<LanguageGo />}
+          label="Go"
+          classes={{ icon: classes.langGo }} />
       </p>
     </>
   )
