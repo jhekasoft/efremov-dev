@@ -1,6 +1,8 @@
 import React, { ReactNode } from 'react'
 import clsx from 'clsx'
-import { AppBar, Avatar, CssBaseline, Divider, IconButton, List, ListItem, ListItemAvatar, ListItemIcon, ListItemText, makeStyles, SwipeableDrawer, Theme, Toolbar, Typography } from '@material-ui/core'
+import { AppBar, Avatar, CssBaseline, Divider, IconButton, List, ListItem,
+  ListItemAvatar, ListItemIcon, ListItemText, makeStyles, SwipeableDrawer,
+  Theme, Toolbar, Typography, Container, Grid } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import TelegramIcon from '@material-ui/icons/Telegram'
 import GitHubIcon from '@material-ui/icons/GitHub'
@@ -10,6 +12,7 @@ import TimelineIcon from '@material-ui/icons/Timeline'
 import DescriptionIcon from '@material-ui/icons/Description'
 import CodeIcon from '@material-ui/icons/Code'
 import ContactsIcon from '@material-ui/icons/Contacts'
+import ThemeLightDarkIcon from 'mdi-material-ui/ThemeLightDark'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
@@ -19,8 +22,7 @@ type Props = {
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    // flexGrow: 1,
-    display: 'flex',
+    display: "flex"
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -44,7 +46,10 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   drawerPaper: {
     width: 240,
-    backgroundColor: theme.palette.primary.dark
+    backgroundColor: theme.palette.type == 'dark'
+      ? theme.palette.primary.dark
+      : theme.palette.primary.light,
+    // color: theme.palette.primary.contrastText,
   },
   drawerContainer: {
     overflow: 'auto',
@@ -52,11 +57,21 @@ const useStyles = makeStyles((theme: Theme) => ({
   drawerList: {
     // width: 240,
   },
+  main: {
+    flexGrow: 1,
+    display: "flex",
+    flexDirection: "column",
+    minHeight: "100vh"
+  },
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
-    paddingTop: 0
+    paddingTop: 0,
   },
+  footer: {
+    marginTop: "auto",
+    backgroundColor: theme.palette.background.paper
+  }
 }))
 
 const Layout = ({ children }: Props) => {
@@ -90,10 +105,13 @@ const Layout = ({ children }: Props) => {
             <MenuIcon />
           </IconButton>
           <Link href="/" passHref>
-            <Typography variant="h6" color="textPrimary" component="a" className={classes.title}>
+            <Typography variant="h6" component="a" className={classes.title} color="inherit">
               efremov.dev
             </Typography>
           </Link>
+          {/* <IconButton color="inherit" aria-label="menu">
+            <ThemeLightDarkIcon />
+          </IconButton> */}
           <IconButton color="inherit" aria-label="menu">
             <TelegramIcon />
           </IconButton>
@@ -112,10 +130,11 @@ const Layout = ({ children }: Props) => {
         open={state.showDrawer}
         onOpen={toggleDrawer()}
         onClose={toggleDrawer()}
+        color="primary"
       >
         <Toolbar />
         <List className={classes.drawerContainer}>
-          <ListItem alignItems="flex-start" color="textPrimary">
+          <ListItem alignItems="flex-start" color="inherit">
             <ListItemAvatar>
               <Link href="/" passHref>
                 <Avatar 
@@ -127,7 +146,7 @@ const Layout = ({ children }: Props) => {
             <ListItemText
               primary="Eugene Efremov"
               secondary="jhekasoft"
-              color="textPrimary"
+              color="inherit"
             />
           </ListItem>
           <Divider />
@@ -135,7 +154,7 @@ const Layout = ({ children }: Props) => {
           <Link href="/" passHref>
             <ListItem button component="a" selected={router.pathname == "/"}>
               <ListItemIcon><HomeIcon /></ListItemIcon>
-              <ListItemText primary="About" />
+              <ListItemText primary="Main" />
             </ListItem>
           </Link>
           <Link href="/experience" passHref>
@@ -168,11 +187,24 @@ const Layout = ({ children }: Props) => {
               <ListItemText primary="Contact" />
             </ListItem>
           </Link>
+          <Divider />
+
+          <ListItem button>
+            <ListItemIcon><ThemeLightDarkIcon /></ListItemIcon>
+            <ListItemText primary="Dark/Light" />
+          </ListItem>
         </List>
       </SwipeableDrawer>
-      <main className={classes.content}>
+      <main className={classes.main}>
         <Toolbar />
-        {children}
+        <div className={classes.content}>
+          {children}
+        </div>
+        <footer className={classes.footer}>
+          <Grid container direction="column" justify="flex-start" alignItems="center">
+            &copy; 2013-2021 Eugene Efremov
+          </Grid>
+        </footer>
       </main>
     </div>
   )
