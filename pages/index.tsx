@@ -1,63 +1,38 @@
-import Head from 'next/head'
-import { Avatar, Chip, createStyles, makeStyles, Theme, Typography, Grid } from '@material-ui/core'
-import { LanguageGo, LanguagePhp, Laravel } from 'mdi-material-ui'
+import * as React from 'react';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import Chip from '@mui/material/Chip';
+import Box from '@mui/material/Box';
+import Avatar from '@mui/material/Avatar';
+import TelegramIcon from '@mui/icons-material/Telegram';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    avatar: {
-      width: theme.spacing(40),
-      height: theme.spacing(40),
-    },
-    techGo: {
-      color: '#49ACD7'
-    },
-    techPhp: {
-      color: '#777BB3'
-    },
-    techLaravel: {
-      color: '#EA4D39'
-    }
-  })
-)
-
-const IndexPage = () => {
-  const classes = useStyles()
-
+export default function Index() {
   return (
-    <>
-      <Head>
-        <title>Eugene Efremov</title>
-      </Head>
-      <Grid container direction="column" justify="flex-start" alignItems="center">
-        <h1>Eugene Efremov</h1>
+    <Container align="center">
+      <Box sx={{ my: 4 }}>
+        <Typography variant="h4" component="h1" gutterBottom>
+          Eugene Efremov
+        </Typography>
         <Avatar
           alt="Eugene Efremov"
           src="https://avatars2.githubusercontent.com/u/1534306?s=460&v=4"
-          className={classes.avatar} />
+          sx={{ width: "20rem", height: "20rem" }}
+        />
         <p><Typography>Web Developer. Kyiv, Ukraine. 🇺🇦</Typography></p>
 
         <p><Typography>Technologies that I prefer (technology stack):</Typography></p>
         <p>
           <Chip
-            icon={<LanguageGo />}
+            icon={<TelegramIcon />}
             label="Go"
-            classes={{ icon: classes.techGo }} />
+            sx={{
+              '& .MuiSvgIcon-root': {
+                color: "#49ACD7"
+              }
+            }}
+          />
         </p>
-
-        <p><Typography>Technologies that I used:</Typography></p>
-        <p>
-          <Chip
-            icon={<LanguagePhp />}
-            label="PHP"
-            classes={{ icon: classes.techPhp }} />&nbsp;
-          <Chip
-            icon={<Laravel />}
-            label="Laravel"
-            classes={{ icon: classes.techLaravel }} />
-        </p>
-      </Grid>
-    </>
-  )
+      </Box>
+    </Container>
+  );
 }
-
-export default IndexPage
