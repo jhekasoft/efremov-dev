@@ -131,10 +131,12 @@ export default function MyApp(props: MyAppProps) {
                   </Button>
                 ))}
               </Box>
-              <Box>
+              <Box sx={{ display: 'flex', alignItems: 'center', width: 'fit-content' }}>
+                <Divider orientation="vertical" flexItem />
                 <IconButton aria-label="Dark/Light mode" color="inherit" title="Dark/Light mode">
                   <LightModeIcon />
                 </IconButton>
+                <Divider orientation="vertical" flexItem />
                 <IconButton aria-label="Telegram" color="inherit" href="https://t.me/jhekasoft" target="__blank" title="Telegram">
                   <TelegramIcon />
                 </IconButton>
