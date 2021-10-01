@@ -18,7 +18,6 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import theme from '../src/theme';

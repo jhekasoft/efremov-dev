@@ -19,12 +19,16 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
+    "export": "next build && next export",
+    "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest",
+    "deploy": "push-dir --dir=out --branch=gh-pages --cleanup",
+    "generate-and-deploy": "npm run export && npm run deploy"
   },
   "devDependencies": {
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
-    "typescript": "latest"
+    "typescript": "latest",
+    "push-dir": "latest"
   }
 }

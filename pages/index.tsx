@@ -8,7 +8,7 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 
 export default function Index() {
   return (
-    <Container align="center">
+    <Container>
       <Box sx={{ my: 4 }}>
         <Typography variant="h4" component="h1" gutterBottom>
           Eugene Efremov
