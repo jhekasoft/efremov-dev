@@ -22,7 +22,7 @@
     "export": "next build && next export",
     "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest",
     "deploy": "push-dir --dir=out --branch=gh-pages --cleanup",
-    "generate-and-deploy": "npm run export && npm run deploy"
+    "export-and-deploy": "npm run export && npm run deploy"
   },
   "devDependencies": {
     "@types/node": "latest",
