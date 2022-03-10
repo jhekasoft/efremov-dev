@@ -34,6 +34,7 @@ interface MyAppProps extends AppProps {
 
 export default function MyApp(props: MyAppProps) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+
   const [state, setState] = React.useState({
     open: false
   });
@@ -67,7 +68,7 @@ export default function MyApp(props: MyAppProps) {
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <ThemeProvider theme={theme}>
-        <Box
+      <Box
           sx={{
             display: 'flex',
             flexDirection: 'column',
@@ -103,12 +104,12 @@ export default function MyApp(props: MyAppProps) {
             <Toolbar variant="dense">
               <IconButton edge="start" color="inherit" aria-label="menu"
                 onClick={toggleDrawer(true)}
-                sx={{ display: { xs: 'inline-flex', sm: 'none' }, mr: 2 }}
+                sx={{ display: { sm: 'inline-flex', md: 'none' }, mr: 2 }}
               >
                 <MenuIcon />
               </IconButton>
               <IconButton component={Link} href="/" edge="start" color="inherit"
-                sx={{ display: { xs: 'none', sm: 'inline-flex' } }}
+                sx={{ display: { sm: 'none', md: 'inline-flex' } }}
               >
                 <Avatar 
                     alt="Eugene Efremov"
@@ -123,7 +124,7 @@ export default function MyApp(props: MyAppProps) {
                 </Typography>
               </Box>
               <Box sx={{ flexGrow: 1 }} />
-              <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+              <Box sx={{ display: { sm: 'none', md: 'block' } }}>
                 {menuList.map((item, index) => (
                   <Button key={'top-menu-' + index} component={Link} href={item.url} color="inherit">
                     {item.title}

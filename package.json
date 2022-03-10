@@ -1,34 +1,31 @@
 {
   "name": "efremov-dev",
-  "version": "5.0.0",
+  "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
+  },
   "dependencies": {
     "@emotion/cache": "latest",
     "@emotion/react": "latest",
-    "@emotion/styled": "latest",
     "@emotion/server": "latest",
-    "@mui/material": "latest",
-    "@mui/lab": "latest",
+    "@emotion/styled": "latest",
     "@mui/icons-material": "latest",
-    "clsx": "latest",
+    "@mui/lab": "latest",
+    "@mui/material": "latest",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest"
   },
-  "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start",
-    "export": "next build && next export",
-    "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest",
-    "deploy": "push-dir --dir=out --branch=gh-pages --cleanup",
-    "export-and-deploy": "npm run export && npm run deploy"
-  },
   "devDependencies": {
     "@types/node": "latest",
     "@types/react": "latest",
-    "@types/react-dom": "latest",
-    "typescript": "latest",
-    "push-dir": "latest"
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "typescript": "latest"
   }
 }
