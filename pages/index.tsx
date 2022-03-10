@@ -9,7 +9,9 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 export default function Index() {
   return (
     <Container>
-      <Box sx={{ my: 4 }}>
+      <Box sx={{ my: 4, display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center' }}>
         <Typography variant="h4" component="h1" gutterBottom>
           Eugene Efremov
         </Typography>
