@@ -6,6 +6,7 @@ import Head from 'next/head';
 import { fetchCv } from '../src/api';
 import { CvSoftwareProjectItem } from '../src/api/types';
 import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Grid } from '@mui/material';
+import Image from 'next/image';
 
 interface StaticPropsProps {
   projectItems: CvSoftwareProjectItem[];
@@ -44,11 +45,14 @@ export default function Projects(props: StaticPropsProps) {
                 sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
               >
                 <CardActionArea href={item.url} target="__blank">
-                  <CardMedia
-                    component="img"
-                    image={item.imageUrl}
-                    alt={item.title}
-                  />
+                  <CardMedia title={item.title}>
+                    <Image
+                      src={item.imageUrl}
+                      width="840"
+                      height="460"
+                      alt={item.title}
+                    />
+                  </CardMedia>
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h5" component="h2">
                       {item.title}
