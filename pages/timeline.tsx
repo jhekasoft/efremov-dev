@@ -11,8 +11,28 @@ import TimelineConnector from '@mui/lab/TimelineConnector'
 import TimelineContent from '@mui/lab/TimelineContent'
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent'
 import TimelineDot from '@mui/lab/TimelineDot'
+import { fetchDeveloperTimeline } from '../src/api';
+import { TimelineItem as TimelineItm } from '../src/api/types';
 
-export default function About() {
+interface StaticPropsProps {
+  timelineItems: TimelineItm[];
+}
+
+interface StaticProps {
+  props: StaticPropsProps
+}
+
+export async function getStaticProps(): Promise<StaticProps> {
+  const data = await fetchDeveloperTimeline();
+
+  return {
+    props: {
+      timelineItems: data.data,
+    },
+  }
+}
+
+export default function TimelineApp(props: StaticPropsProps) {
   return (
     <>
     <Head>
@@ -25,45 +45,31 @@ export default function About() {
         </Typography>
 
         <Timeline position="alternate">
-          <TimelineItem>
-            <TimelineOppositeContent>
-              <Typography variant="body2" color="textSecondary">
-                2018 – 2019 
-              </Typography>
-            </TimelineOppositeContent>
-            <TimelineSeparator>
-              <TimelineDot color="primary" />
-              <TimelineConnector />
-            </TimelineSeparator>
-            <TimelineContent>
-              <Paper elevation={3} sx={{ padding: '6px 16px' }}>
-                <Typography variant="h6" component="h1">
-                  1000.tech
+          { props.timelineItems.map((item, i) => (
+            <TimelineItem key={i}>
+              <TimelineOppositeContent>
+                <Typography variant="body2" color="textSecondary">
+                  {item.year}
                 </Typography>
-                <Typography>Developer, techlead (fullstack, node.js, JS (Vue.js, Nuxt.js), Go, Dart (Flutter))</Typography>
-                <Typography color="textSecondary">Kyiv</Typography>
-              </Paper>
-            </TimelineContent>
-          </TimelineItem>
-
-          <TimelineItem>
-            <TimelineOppositeContent>
-              <Typography variant="body2" color="textSecondary">
-                2004
-              </Typography>
-            </TimelineOppositeContent>
-            <TimelineSeparator>
-              <TimelineDot color="primary" />
-            </TimelineSeparator>
-            <TimelineContent>
-              <Paper elevation={3} sx={{ padding: '6px 16px' }}>
-                <Typography variant="h6" component="h1">
-                  Eat
-                </Typography>
-                <Typography>Because you need strength</Typography>
-              </Paper>
-            </TimelineContent>
-          </TimelineItem>
+              </TimelineOppositeContent>
+              <TimelineSeparator>
+                <TimelineDot color="primary" />
+                <TimelineConnector />
+              </TimelineSeparator>
+              <TimelineContent>
+                <Paper elevation={3} sx={{ padding: '6px 16px' }}>
+                  {item.desc.map((descItem, j) => (
+                    <Typography key={j}>
+                      <span dangerouslySetInnerHTML={{ __html: descItem.replace(
+                        /\*\*(\S(.*?\S)?)\*\*/gm,
+                        '<i>$1</i>'
+                      ) }}></span>
+                    </Typography>
+                  ))}
+                </Paper>
+              </TimelineContent>
+            </TimelineItem>
+          )) }
         </Timeline>
       </Box>
     </Container>
