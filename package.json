@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
+    "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest",
+    "export": "next build && next export",
+    "deploy": "push-dir --dir=out --branch=gh-pages --cleanup",
+    "export-and-deploy": "npm run export && npm run deploy"
   },
   "dependencies": {
     "@emotion/cache": "latest",
@@ -26,6 +29,7 @@
     "@types/react": "latest",
     "eslint": "latest",
     "eslint-config-next": "latest",
-    "typescript": "latest"
+    "typescript": "latest",
+    "push-dir": "latest"
   }
 }
