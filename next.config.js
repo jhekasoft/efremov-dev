@@ -2,8 +2,9 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    loader: 'akamai',
+    loader: 'imgix',
     path: '',
-    domains: ['localhost']
+    domains: ['localhost'],
+    unoptimized: true
   },
 };
