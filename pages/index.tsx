@@ -290,30 +290,36 @@ export default function Index() {
         <p><Typography>Web Developer. Kyiv, Ukraine. 🇺🇦</Typography></p>
 
         <p><Typography>Technologies that I prefer (technology stack):</Typography></p>
-        <p>
+        <p style={{ textAlign: "center" }}>
           <Chip
             icon={<SvgIcon><FontAwesomeIcon color="#49ACD7" icon={faGolang} /></SvgIcon>}
             label="Go"
+            sx={{ mb: 1 }}
           />&nbsp;
           <Chip
             icon={<SvgIcon><TypeScriptIcon /></SvgIcon>}
             label="TypeScript"
+            sx={{ mb: 1 }}
           />&nbsp;
           <Chip
             icon={<SvgIcon><FontAwesomeIcon color="#E7CF21" icon={faJsSquare} /></SvgIcon>}
             label="JavaScript"
+            sx={{ mb: 1 }}
           />&nbsp;
           <Chip
             icon={<SvgIcon><FontAwesomeIcon color="#639A58" icon={faNodeJs} /></SvgIcon>}
             label="Node.js"
+            sx={{ mb: 1 }}
           />&nbsp;
           <Chip
             icon={<SvgIcon><NextJsIcon /></SvgIcon>}
             label="Next.js"
+            sx={{ mb: 1 }}
           />&nbsp;
           <Chip
             icon={<SvgIcon><FontAwesomeIcon color="#000" icon={faLinux} /></SvgIcon>}
             label="GNU/Linux"
+            sx={{ mb: 1 }}
           />
           {/* <Chip
             icon={<TelegramIcon sx={{ "&&": { color: "#49ACD7" } }} />}
@@ -322,36 +328,44 @@ export default function Index() {
         </p>
 
         <p><Typography>Technologies that I used:</Typography></p>
-        <p>
+        <p style={{ textAlign: "center" }}>
           <Chip
             icon={<SvgIcon><ScalaIcon /></SvgIcon>}
             label="Scala"
+            sx={{ mb: 1 }}
           />&nbsp;
           <Chip
             icon={<SvgIcon><FlutterIcon /></SvgIcon>}
             label="Flutter"
+            sx={{ mb: 1 }}
           />&nbsp;
           <Chip
             label="C"
+            sx={{ mb: 1 }}
           />&nbsp;
           <Chip
             label="C++"
+            sx={{ mb: 1 }}
           />&nbsp;
           <Chip
             icon={<SvgIcon><LuaIcon /></SvgIcon>}
             label="Lua"
+            sx={{ mb: 1 }}
           />&nbsp;
           <Chip
             icon={<SvgIcon><PythonIcon /></SvgIcon>}
             label="Python"
+            sx={{ mb: 1 }}
           />&nbsp;
           <Chip
             icon={<SvgIcon><FontAwesomeIcon color="#777BB3" icon={faPhp} /></SvgIcon>}
             label="PHP"
+            sx={{ mb: 1 }}
           />&nbsp;
           <Chip
             icon={<SvgIcon><FontAwesomeIcon color="#5382a1" icon={faJava} /></SvgIcon>}
             label="Java"
+            sx={{ mb: 1 }}
           />&nbsp;
         </p>
       </Box>
