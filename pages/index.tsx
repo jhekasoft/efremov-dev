@@ -290,7 +290,7 @@ export default function Index() {
         <p><Typography>Web Developer. Kyiv, Ukraine. 🇺🇦</Typography></p>
 
         <p><Typography>Technologies that I prefer (technology stack):</Typography></p>
-        <p style={{ textAlign: "center" }}>
+        <p><Typography sx={{ textAlign: "center" }}>
           <Chip
             icon={<SvgIcon><FontAwesomeIcon color="#49ACD7" icon={faGolang} /></SvgIcon>}
             label="Go"
@@ -317,6 +317,18 @@ export default function Index() {
             sx={{ mb: 1 }}
           />&nbsp;
           <Chip
+            label="PostgreSQL"
+            sx={{ mb: 1 }}
+          />&nbsp;
+          <Chip
+            label="Redis"
+            sx={{ mb: 1 }}
+          />&nbsp;
+          <Chip
+            label="MQTT"
+            sx={{ mb: 1 }}
+          />&nbsp;
+          <Chip
             icon={<SvgIcon><FontAwesomeIcon color="#000" icon={faLinux} /></SvgIcon>}
             label="GNU/Linux"
             sx={{ mb: 1 }}
@@ -325,10 +337,10 @@ export default function Index() {
             icon={<TelegramIcon sx={{ "&&": { color: "#49ACD7" } }} />}
             label="Go"
           /> */}
-        </p>
+        </Typography></p>
 
         <p><Typography>Technologies that I used:</Typography></p>
-        <p style={{ textAlign: "center" }}>
+        <p><Typography sx={{ textAlign: "center" }}>
           <Chip
             icon={<SvgIcon><ScalaIcon /></SvgIcon>}
             label="Scala"
@@ -367,7 +379,7 @@ export default function Index() {
             label="Java"
             sx={{ mb: 1 }}
           />&nbsp;
-        </p>
+        </Typography></p>
       </Box>
     </Container>
   );
