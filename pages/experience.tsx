@@ -53,7 +53,7 @@ export default function Experience(props: StaticPropsProps) {
                 <Typography variant="body2" color="textSecondary">
                   {item.startYear}
                   {item.startYear != item.endYear &&
-                    <>– {item.endYear ? item.endYear : "present"}</>
+                    <> – {item.endYear ? item.endYear : "present"}</>
                   }
                 </Typography>
               </TimelineOppositeContent>
@@ -85,7 +85,7 @@ export default function Experience(props: StaticPropsProps) {
                 <Typography variant="body2" color="textSecondary">
                   {item.startYear}
                   {item.startYear != item.endYear &&
-                    <>– {item.endYear ? item.endYear : "present"}</>
+                    <> – {item.endYear ? item.endYear : "present"}</>
                   }
                 </Typography>
               </TimelineOppositeContent>
