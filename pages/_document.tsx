@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import createEmotionServer from '@emotion/server/create-instance';
-import { lightTheme } from '../src/theme';
+import { lightTheme, darkTheme } from '../src/theme';
 import createEmotionCache from '../src/createEmotionCache';
 
 export default class MyDocument extends Document {
@@ -10,7 +10,8 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           {/* PWA primary color */}
-          <meta name="theme-color" content={lightTheme.palette.primary.main} />
+          <meta name="theme-color" content={lightTheme.palette.primary.main} media="(prefers-color-scheme: light)"/>
+          <meta name="theme-color" content={darkTheme.palette.primary.main} media="(prefers-color-scheme: dark)"/>
           <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
           <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
           <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
