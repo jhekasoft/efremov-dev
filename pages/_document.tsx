@@ -17,7 +17,7 @@ export default class MyDocument extends Document {
           <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
           <link rel="manifest" href="/site.webmanifest" />
           <meta property="og:title" content="Efremov.dev" />
-          <meta property="og:description" content="Web Developer. Kyiv, Ukraine. Golang, TypeScript, Node.js" />
+          <meta property="og:description" content="Developer. Kyiv, Ukraine. Golang, TypeScript, Node.js" />
           <meta property="og:url" content="https://efremov.dev/" />
           <meta property="og:site_name" content="Efremov.dev" />
           <meta property="og:type" content="website" />

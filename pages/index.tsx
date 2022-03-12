@@ -590,7 +590,7 @@ export default function Index() {
           src="https://avatars2.githubusercontent.com/u/1534306?s=460&v=4"
           sx={{ width: "20rem", height: "20rem" }}
         />
-        <p><Typography>Web Developer. Kyiv, Ukraine. 🇺🇦</Typography></p>
+        <p><Typography>Developer. Kyiv, Ukraine. 🇺🇦</Typography></p>
 
         <p><Typography>Technologies that I prefer (technology stack):</Typography></p>
         <p><Typography sx={{ textAlign: "center" }}>
