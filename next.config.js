@@ -2,9 +2,6 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    loader: 'imgix',
-    path: '',
-    domains: ['localhost'],
-    unoptimized: true
+    loader: 'custom'
   },
 };

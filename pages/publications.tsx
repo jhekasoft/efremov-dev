@@ -47,6 +47,7 @@ export default function Publications(props: StaticPropsProps) {
                 <CardActionArea href={item.url} target="__blank">
                   <CardMedia title={item.title}>
                     <Image
+                      loader={({ src }) => src}
                       src={item.imageUrl}
                       width="840"
                       height="460"
