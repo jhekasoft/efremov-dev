@@ -26,6 +26,7 @@ import createEmotionCache from '../src/createEmotionCache';
 import Copyright from '../src/Copyright';
 import Link from '../src/Link';
 import { Container, useMediaQuery } from '@mui/material';
+import TagManager from 'react-gtm-module';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -81,6 +82,10 @@ export default function MyApp(props: MyAppProps) {
     {title: "Projects", url: "/projects"},
     {title: "Contact", url: "/contact"}
   ];
+
+  React.useEffect(() => {
+    TagManager.initialize({ gtmId: 'GTM-PDXCN6D' });
+  }, []);
 
   return (
     <CacheProvider value={emotionCache}>

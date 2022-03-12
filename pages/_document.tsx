@@ -19,6 +19,7 @@ export default class MyDocument extends Document {
           <meta property="og:description" content="Web Developer. Kyiv, Ukraine. Golang, TypeScript, Node.js" />
           <meta property="og:url" content="https://efremov.dev/" />
           <meta property="og:site_name" content="Efremov.dev" />
+          <meta property="og:type" content="website" />
           <meta property="og:image" content="https://efremov.dev/cover.jpg" />
           <link
             rel="stylesheet"
