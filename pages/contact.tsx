@@ -7,6 +7,7 @@ import Head from 'next/head';
 import EmailIcon from '@mui/icons-material/Email';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 export default function About() {
   return (
@@ -27,6 +28,9 @@ export default function About() {
         </p>
         <p><GitHubIcon sx={{ mr: 1, verticalAlign: 'middle' }} />
           Github: <Link href="https://github.com/jhekasoft" target="__blank">@jhekasoft</Link>
+        </p>
+        <p><LinkedInIcon sx={{ mr: 1, verticalAlign: 'middle' }} />
+          LinkedIn: <Link href="https://www.linkedin.com/in/jhekasoft" target="__blank">@jhekasoft</Link>
         </p>
       </Box>
     </Container>
