@@ -4,7 +4,6 @@ import { grey, red, teal } from '@mui/material/colors';
 // Create a theme instance.
 const lightTheme = createTheme({
   palette: {
-    // mode: 'dark',
     primary: {
       main: teal[500],
       light: teal[100]

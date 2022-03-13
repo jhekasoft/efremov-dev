@@ -141,7 +141,6 @@ export default function MyApp(props: MyAppProps) {
                   <Avatar 
                       alt="Eugene Efremov"
                       src="https://avatars2.githubusercontent.com/u/1534306?s=460&v=4"
-                      component="a"
                       sx={{ width: 24, height: 24 }}
                   />
                 </IconButton>
