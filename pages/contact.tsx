@@ -10,10 +10,13 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 export default function About() {
+  const title = `Contact | ${process.env.baseTitle}`;
+
   return (
     <>
     <Head>
-      <title>Contact</title>
+      <title>{title}</title>
+      <meta property="og:title" content={title} key="title" />
     </Head>
     <Container>
       <Box sx={{ my: 4 }}>

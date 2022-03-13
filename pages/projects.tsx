@@ -27,10 +27,13 @@ export async function getStaticProps(): Promise<StaticProps> {
 }
 
 export default function Projects(props: StaticPropsProps) {
+  const title = `Projects | ${process.env.baseTitle}`;
+
   return (
     <>
     <Head>
-      <title>Projects</title>
+      <title>{title}</title>
+      <meta property="og:title" content={title} key="title" />
     </Head>
     <Container>
       <Box sx={{ my: 4 }}>

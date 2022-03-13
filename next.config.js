@@ -4,4 +4,7 @@ module.exports = {
   images: {
     loader: 'custom'
   },
+  env: {
+    baseTitle: 'efremov.dev'
+  }
 };

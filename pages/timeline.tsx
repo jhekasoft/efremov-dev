@@ -33,10 +33,13 @@ export async function getStaticProps(): Promise<StaticProps> {
 }
 
 export default function TimelineApp(props: StaticPropsProps) {
+  const title = `Developer timeline | ${process.env.baseTitle}`;
+
   return (
     <>
     <Head>
-      <title>Developer timeline</title>
+      <title>{title}</title>
+      <meta property="og:title" content={title} key="title" />
     </Head>
     <Container>
       <Box sx={{ my: 4 }}>

@@ -90,8 +90,14 @@ export default function MyApp(props: MyAppProps) {
   return (
     <CacheProvider value={emotionCache}>
       <Head>
-        <title>Efremov.dev</title>
+        <title>{process.env.baseTitle}</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <meta property="og:title" content={process.env.baseTitle} key="title" />
+        <meta property="og:description" content="Developer. Kyiv, Ukraine. Golang, TypeScript, Node.js" />
+        <meta property="og:url" content="https://efremov.dev/" />
+        <meta property="og:site_name" content={process.env.baseTitle} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://efremov.dev/cover.jpg" />
       </Head>
       <ColorModeContext.Provider value={colorMode}>
         <ThemeProvider theme={getTheme(state.themeMode)}>

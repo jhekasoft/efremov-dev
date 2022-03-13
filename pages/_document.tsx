@@ -16,12 +16,6 @@ export default class MyDocument extends Document {
           <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
           <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
           <link rel="manifest" href="/site.webmanifest" />
-          <meta property="og:title" content="Efremov.dev" />
-          <meta property="og:description" content="Developer. Kyiv, Ukraine. Golang, TypeScript, Node.js" />
-          <meta property="og:url" content="https://efremov.dev/" />
-          <meta property="og:site_name" content="Efremov.dev" />
-          <meta property="og:type" content="website" />
-          <meta property="og:image" content="https://efremov.dev/cover.jpg" />
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
