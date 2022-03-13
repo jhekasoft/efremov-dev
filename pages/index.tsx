@@ -21,7 +21,7 @@ export default function Index() {
           src="https://avatars2.githubusercontent.com/u/1534306?s=460&v=4"
           sx={{ width: "20rem", height: "20rem", mb: 2 }}
         />
-        <Typography sx={{ mb: 4 }}>Developer. Kyiv, Ukraine. 🇺🇦</Typography>
+        <Typography sx={{ mb: 4 }}>Software engineer. Kyiv, Ukraine. 🇺🇦</Typography>
 
         <Typography sx={{ mb: 2 }}>Technologies that I prefer (technology stack):</Typography>
         <Box sx={{ textAlign: "center", mb: 4 }}>

@@ -93,7 +93,7 @@ export default function MyApp(props: MyAppProps) {
         <title>{process.env.baseTitle}</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <meta property="og:title" content={process.env.baseTitle} key="title" />
-        <meta property="og:description" content="Developer. Kyiv, Ukraine. Golang, TypeScript, Node.js" />
+        <meta property="og:description" content="Software engineer. 🧑‍💻 Kyiv, Ukraine. 🇺🇦 Golang, TypeScript, Node.js" />
         <meta property="og:url" content="https://efremov.dev/" />
         <meta property="og:site_name" content={process.env.baseTitle} />
         <meta property="og:type" content="website" />
