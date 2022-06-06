@@ -5,6 +5,7 @@ module.exports = {
     loader: 'custom'
   },
   env: {
-    baseTitle: 'efremov.dev'
+    baseTitle: 'efremov.dev',
+    googleTagId: 'GTM-PDXCN6D'
   }
 };

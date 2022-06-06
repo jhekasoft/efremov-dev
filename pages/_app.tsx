@@ -84,7 +84,9 @@ export default function MyApp(props: MyAppProps) {
   ];
 
   React.useEffect(() => {
-    TagManager.initialize({ gtmId: 'GTM-PDXCN6D' });
+    if (process.env.googleTagId ) {
+      TagManager.initialize({ gtmId: process.env.googleTagId || '' });
+    }
   }, []);
 
   return (
@@ -152,7 +154,7 @@ export default function MyApp(props: MyAppProps) {
                 </IconButton>
                 <Box>
                   <Typography variant="h6" color="inherit" component={Link} href="/">
-                    efremov.dev
+                    {process.env.baseTitle}
                   </Typography>
                 </Box>
                 <Box sx={{ flexGrow: 1 }} />

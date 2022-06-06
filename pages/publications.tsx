@@ -47,7 +47,11 @@ export default function Publications(props: StaticPropsProps) {
               <Card
                 sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
               >
-                <CardActionArea href={item.url} target="__blank">
+                <CardActionArea
+                  href={item.url}
+                  target="__blank"
+                  sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'start' }}
+                >
                   <CardMedia title={item.title}>
                     <Image
                       loader={({ src }) => src}
