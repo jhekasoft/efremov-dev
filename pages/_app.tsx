@@ -25,7 +25,6 @@ import { lightTheme, darkTheme } from '../src/theme';
 import createEmotionCache from '../src/createEmotionCache';
 import Copyright from '../src/Copyright';
 import Link from '../src/Link';
-import { Container, useMediaQuery } from '@mui/material';
 import TagManager from 'react-gtm-module';
 
 // Client-side cache, shared for the whole session of the user in the browser.
@@ -135,7 +134,11 @@ export default function MyApp(props: MyAppProps) {
                 </List>
               </Box>
             </Drawer>
-            <AppBar position="static" color="primary" enableColorOnDark>
+            <AppBar 
+              color="primary"
+              enableColorOnDark
+              sx={{backdropFilter:"blur(8px)", backgroundColor: "rgba(0, 121, 107, 0.7)"}} // Header's blur
+            >
               <Toolbar variant="dense">
                 <IconButton edge="start" color="inherit" aria-label="menu"
                   onClick={toggleDrawer(true)}
@@ -183,6 +186,8 @@ export default function MyApp(props: MyAppProps) {
                 </Box>
               </Toolbar>
             </AppBar>
+
+            <Toolbar variant="dense"></Toolbar> {/* For AppBar margin */}
             <Component {...pageProps} />
             <Box
               component="footer"
