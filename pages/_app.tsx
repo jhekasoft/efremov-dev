@@ -26,6 +26,7 @@ import createEmotionCache from '../src/createEmotionCache';
 import Copyright from '../src/Copyright';
 import Link from '../src/Link';
 import TagManager from 'react-gtm-module';
+import { ListItemButton } from '@mui/material';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -123,13 +124,13 @@ export default function MyApp(props: MyAppProps) {
                 onKeyDown={toggleDrawer(false)}
               >
                 <List>
-                <ListItem button component={Link} href="/">
+                  <ListItemButton component={Link} href="/">
                     <ListItemText primary="Main" />
-                  </ListItem>
+                  </ListItemButton>
                   {menuList.map((item, index) => (
-                    <ListItem key={'drawer-menu-' + index} button component={Link} href={item.url}>
+                    <ListItemButton key={'drawer-menu-' + index} component={Link} href={item.url}>
                       <ListItemText primary={item.title} />
-                    </ListItem>
+                    </ListItemButton>
                   ))}
                 </List>
               </Box>
@@ -156,7 +157,7 @@ export default function MyApp(props: MyAppProps) {
                   />
                 </IconButton>
                 <Box>
-                  <Typography variant="h6" color="inherit" component={Link} href="/">
+                  <Typography variant="h6" color="inherit" component={Link} href="/" sx={{ textDecoration: 'none' }}>
                     {process.env.baseTitle}
                   </Typography>
                 </Box>
