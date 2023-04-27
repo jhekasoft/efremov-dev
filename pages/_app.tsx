@@ -28,13 +28,26 @@ import Link from '../src/Link';
 import TagManager from 'react-gtm-module';
 import { ListItemButton } from '@mui/material';
 
+const themeModeKey = 'themeMode';
+
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
-const ColorModeContext = React.createContext({ toggleColorMode: () => {} })
+// const ColorModeContext = React.createContext({ toggleColorMode: () => {} })
 
 function getTheme(themeMode: string): Theme {
   return themeMode === 'light' ? lightTheme : darkTheme;
+}
+
+function readThemeMode(): string {
+  const themeMode = localStorage.getItem(themeModeKey);
+  return themeMode == 'light' ? 'light' : 'dark';
+}
+
+function writeThemeMode(mode: string) {
+  const themeMode = mode == 'light' ? 'light' : 'dark';
+  localStorage.setItem(themeModeKey, themeMode);
+  return themeMode;
 }
 
 interface MyAppProps extends AppProps {
@@ -52,14 +65,11 @@ export default function MyApp(props: MyAppProps) {
     themeMode: 'dark'
   });
 
-  const colorMode = React.useMemo(
-    () => ({
-        toggleColorMode: () => {
-          setState((state) => ({ ...state, themeMode: state.themeMode == 'light' ? 'dark' : 'light' }))
-        }
-    }),
-    []
-  )
+  function toggleColorMode() {
+    const themeMode = state.themeMode == 'light' ? 'dark' : 'light';
+    setState((state) => ({ ...state, themeMode }))
+    writeThemeMode(themeMode);
+  };
 
   const toggleDrawer =
   (open: boolean) =>
@@ -84,6 +94,10 @@ export default function MyApp(props: MyAppProps) {
   ];
 
   React.useEffect(() => {
+    const themeMode = readThemeMode();
+    setState((state) => ({ ...state, themeMode }))
+
+    // Google Tag
     if (process.env.googleTagId ) {
       TagManager.initialize({ gtmId: process.env.googleTagId || '' });
     }
@@ -101,112 +115,110 @@ export default function MyApp(props: MyAppProps) {
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://efremov.dev/cover.jpg" />
       </Head>
-      <ColorModeContext.Provider value={colorMode}>
-        <ThemeProvider theme={getTheme(state.themeMode)}>
+      <ThemeProvider theme={getTheme(state.themeMode)}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            minHeight: '100vh',
+          }}
+        >
+          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+          <CssBaseline />
+          <Drawer
+            anchor="left"
+            open={state.open}
+            onClose={toggleDrawer(false)}
+          >
+            <Box
+              sx={{ width: 250 }}
+              role="presentation"
+              onClick={toggleDrawer(false)}
+              onKeyDown={toggleDrawer(false)}
+            >
+              <List>
+                <ListItemButton component={Link} href="/">
+                  <ListItemText primary="Main" />
+                </ListItemButton>
+                {menuList.map((item, index) => (
+                  <ListItemButton key={'drawer-menu-' + index} component={Link} href={item.url}>
+                    <ListItemText primary={item.title} />
+                  </ListItemButton>
+                ))}
+              </List>
+            </Box>
+          </Drawer>
+          <AppBar 
+            color="primary"
+            enableColorOnDark
+            sx={{backdropFilter:"blur(8px)", backgroundColor: "rgba(0, 121, 107, 0.7)"}} // Header's blur
+          >
+            <Toolbar variant="dense">
+              <IconButton edge="start" color="inherit" aria-label="menu"
+                onClick={toggleDrawer(true)}
+                sx={{ display: { sm: 'inline-flex', md: 'none' }, mr: 2 }}
+              >
+                <MenuIcon />
+              </IconButton>
+              <IconButton component={Link} href="/" edge="start" color="inherit"
+                sx={{ display: { xs: 'none', sm: 'none', md: 'inline-flex' } }}
+              >
+                <Avatar 
+                    alt="Eugene Efremov"
+                    src="https://avatars2.githubusercontent.com/u/1534306?s=460&v=4"
+                    sx={{ width: 24, height: 24 }}
+                />
+              </IconButton>
+              <Box>
+                <Typography variant="h6" color="inherit" component={Link} href="/" sx={{ textDecoration: 'none' }}>
+                  {process.env.baseTitle}
+                </Typography>
+              </Box>
+              <Box sx={{ flexGrow: 1 }} />
+              <Box sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }}>
+                {menuList.map((item, index) => (
+                  <Button key={'top-menu-' + index} component={Link} href={item.url} color="inherit">
+                    {item.title}
+                  </Button>
+                ))}
+              </Box>
+              <Box sx={{ display: 'flex', alignItems: 'center', width: 'fit-content' }}>
+                <Divider orientation="vertical" flexItem />
+                <IconButton aria-label="Dark/Light mode" color="inherit"
+                  onClick={toggleColorMode} title="Dark/Light mode">
+                  {state.themeMode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
+                </IconButton>
+                <Divider orientation="vertical" flexItem />
+                <IconButton aria-label="Telegram" color="inherit"
+                  href="https://t.me/jhekasoft" target="__blank" title="Telegram">
+                  <TelegramIcon />
+                </IconButton>
+                <IconButton aria-label="GitHub" color="inherit"
+                  href="https://github.com/jhekasoft" target="__blank" title="GitHub">
+                  <GitHubIcon />
+                </IconButton>
+              </Box>
+            </Toolbar>
+          </AppBar>
+
+          <Toolbar variant="dense"></Toolbar> {/* For AppBar margin */}
+          <Component {...pageProps} />
           <Box
+            component="footer"
             sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              minHeight: '100vh',
+              py: 1,
+              px: 2,
+              mt: 'auto',
+              backgroundColor: (theme) => theme.palette.action.selected
+                // theme.palette.mode === 'light'
+                //   ? theme.palette.grey[200]
+                //   : theme.palette.grey[800],
             }}
           >
-            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-            <CssBaseline />
-            <Drawer
-              anchor="left"
-              open={state.open}
-              onClose={toggleDrawer(false)}
-            >
-              <Box
-                sx={{ width: 250 }}
-                role="presentation"
-                onClick={toggleDrawer(false)}
-                onKeyDown={toggleDrawer(false)}
-              >
-                <List>
-                  <ListItemButton component={Link} href="/">
-                    <ListItemText primary="Main" />
-                  </ListItemButton>
-                  {menuList.map((item, index) => (
-                    <ListItemButton key={'drawer-menu-' + index} component={Link} href={item.url}>
-                      <ListItemText primary={item.title} />
-                    </ListItemButton>
-                  ))}
-                </List>
-              </Box>
-            </Drawer>
-            <AppBar 
-              color="primary"
-              enableColorOnDark
-              sx={{backdropFilter:"blur(8px)", backgroundColor: "rgba(0, 121, 107, 0.7)"}} // Header's blur
-            >
-              <Toolbar variant="dense">
-                <IconButton edge="start" color="inherit" aria-label="menu"
-                  onClick={toggleDrawer(true)}
-                  sx={{ display: { sm: 'inline-flex', md: 'none' }, mr: 2 }}
-                >
-                  <MenuIcon />
-                </IconButton>
-                <IconButton component={Link} href="/" edge="start" color="inherit"
-                  sx={{ display: { xs: 'none', sm: 'none', md: 'inline-flex' } }}
-                >
-                  <Avatar 
-                      alt="Eugene Efremov"
-                      src="https://avatars2.githubusercontent.com/u/1534306?s=460&v=4"
-                      sx={{ width: 24, height: 24 }}
-                  />
-                </IconButton>
-                <Box>
-                  <Typography variant="h6" color="inherit" component={Link} href="/" sx={{ textDecoration: 'none' }}>
-                    {process.env.baseTitle}
-                  </Typography>
-                </Box>
-                <Box sx={{ flexGrow: 1 }} />
-                <Box sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }}>
-                  {menuList.map((item, index) => (
-                    <Button key={'top-menu-' + index} component={Link} href={item.url} color="inherit">
-                      {item.title}
-                    </Button>
-                  ))}
-                </Box>
-                <Box sx={{ display: 'flex', alignItems: 'center', width: 'fit-content' }}>
-                  <Divider orientation="vertical" flexItem />
-                  <IconButton aria-label="Dark/Light mode" color="inherit"
-                    onClick={colorMode.toggleColorMode} title="Dark/Light mode">
-                    {state.themeMode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
-                  </IconButton>
-                  <Divider orientation="vertical" flexItem />
-                  <IconButton aria-label="Telegram" color="inherit"
-                    href="https://t.me/jhekasoft" target="__blank" title="Telegram">
-                    <TelegramIcon />
-                  </IconButton>
-                  <IconButton aria-label="GitHub" color="inherit"
-                    href="https://github.com/jhekasoft" target="__blank" title="GitHub">
-                    <GitHubIcon />
-                  </IconButton>
-                </Box>
-              </Toolbar>
-            </AppBar>
-
-            <Toolbar variant="dense"></Toolbar> {/* For AppBar margin */}
-            <Component {...pageProps} />
-            <Box
-              component="footer"
-              sx={{
-                py: 1,
-                px: 2,
-                mt: 'auto',
-                backgroundColor: (theme) => theme.palette.action.selected
-                  // theme.palette.mode === 'light'
-                  //   ? theme.palette.grey[200]
-                  //   : theme.palette.grey[800],
-              }}
-            >
-              <Copyright />
-            </Box>
+            <Copyright />
           </Box>
-        </ThemeProvider>
-      </ColorModeContext.Provider>
+        </Box>
+      </ThemeProvider>
     </CacheProvider>
   );
 }
