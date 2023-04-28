@@ -27,6 +27,7 @@ import Copyright from '../src/Copyright';
 import Link from '../src/Link';
 import TagManager from 'react-gtm-module';
 import { ListItemButton } from '@mui/material';
+import { useRouter } from 'next/router';
 
 const themeModeKey = 'themeMode';
 
@@ -108,12 +109,13 @@ export default function MyApp(props: MyAppProps) {
       <Head>
         <title>{process.env.baseTitle}</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
-        <meta property="og:title" content={process.env.baseTitle} key="title" />
-        <meta property="og:description" content="Software engineer. 🧑‍💻 Kyiv, Ukraine. 🇺🇦 Golang, TypeScript, Node.js" />
-        <meta property="og:url" content="https://efremov.dev/" />
+        <meta property="og:title" key="title" content={process.env.baseTitle} />
+        <meta property="og:description" key="description" content="Software engineer. 🧑‍💻 Kyiv, Ukraine. 🇺🇦 Golang, TypeScript, Node.js" />
+        <meta property="og:url" content={process.env.baseUrl + useRouter().asPath} />
         <meta property="og:site_name" content={process.env.baseTitle} />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://efremov.dev/cover.jpg" />
+        <meta property="og:image" key="image" content={process.env.baseUrl + "/cover.jpg"} />
+        <meta property="og:locale" content="en_US" />
       </Head>
       <ThemeProvider theme={getTheme(state.themeMode)}>
         <Box
