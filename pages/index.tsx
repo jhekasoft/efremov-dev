@@ -23,7 +23,7 @@ export default function Index() {
         />
         <Typography sx={{ mb: 4 }}>Software engineer. Kyiv, Ukraine. 🇺🇦</Typography>
 
-        <Typography sx={{ mb: 2 }}>Technologies that I prefer (technology stack):</Typography>
+        <Typography sx={{ mb: 2 }}>Technology stack:</Typography>
         <Box sx={{ textAlign: "center", mb: 4 }}>
           <Chip
             icon={<SvgIcon><Icon.GolangIcon /></SvgIcon>}
@@ -43,6 +43,11 @@ export default function Index() {
           <Chip
             icon={<SvgIcon><Icon.NodeJsIcon /></SvgIcon>}
             label="Node.js"
+            sx={{ mb: 1 }}
+          />&nbsp;
+          <Chip
+            icon={<SvgIcon><Icon.NestJsIcon /></SvgIcon>}
+            label="NestJS"
             sx={{ mb: 1 }}
           />&nbsp;
           <Chip
@@ -76,7 +81,7 @@ export default function Index() {
           /> */}
         </Box>
 
-        <Typography sx={{ mb: 2 }}>Technologies that I used:</Typography>
+        <Typography sx={{ mb: 2 }}>Legacy:</Typography>
         <Box sx={{ textAlign: "center" }}>
           <Chip
             icon={<SvgIcon><Icon.ScalaIcon /></SvgIcon>}
